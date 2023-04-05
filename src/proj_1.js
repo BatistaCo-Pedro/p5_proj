@@ -40,7 +40,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(180);
   for (let i in platforms) {
     platforms[i].draw();
   }
@@ -51,9 +51,9 @@ function draw() {
 }
 
 function keyDown() {
-  if (keyIsDown(LEFT_ARROW)) {
+  if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
     car.direction = directions.LEFT;
-  } else if (keyIsDown(RIGHT_ARROW)) {
+  } else if (keyIsDown(RIGHT_ARROW)  || keyIsDown(68)) {
     car.direction = directions.RIGHT;
   } else {
     car.direction = directions.NONE;
@@ -70,7 +70,7 @@ class Car {
   constructor(x, y, width, height) {
     this.x = x;
     this.y = y;
-    this.speed = 3;
+    this.speed = 4;
     this.width = width;
     this.height = height;
     this.direction = directions.NONE;
@@ -125,12 +125,7 @@ class Car {
       return false;
     }
 
-  }
-
-  at_canvas_boundary() {
-    let adj_height = this.y + this.height;
-    return adj_height >= height && adj_height <= height + this.forceY;
-  }
+  } 
 
   check_gravity() {
     for (let i in platforms) {
@@ -148,7 +143,7 @@ class Car {
       this.x -= this.speed;
     }
 
-    //restart when car falls down
+    //restart when player falls down
     if(this.y > height - 200) {
         this.x = 75, this.y = 50;
     }
