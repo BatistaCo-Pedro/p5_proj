@@ -1,8 +1,10 @@
-const numCircles = 10;
+const numCircles = 50;
 const maxRadius = 50;
 const stepSize = 2;
 const mouseAttraction = 0.10;
 let circles = [];
+let timerValue = 4; // start time in seconds
+let timerInterval;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,11 +22,11 @@ function setup() {
     let vy = random(-stepSize, stepSize);
     circles.push({ x, y, r, vx, vy });
   }
+
+  startTimer()
 }
 
 function draw() {
-  background(255);
-
   // update circle positions
   for (let i = 0; i < numCircles; i++) {
     let circle = circles[i];
@@ -44,4 +46,19 @@ function draw() {
     // draw circle
     ellipse(circle.x, circle.y, circle.r * 2);
   }
+}
+
+
+function startTimer() {
+    timerInterval = setInterval(updateTimer, 1000);
+    
+}
+
+function updateTimer() {
+    if (timerValue > 0) {
+        timerValue--;
+    } else {
+        clearInterval(timerInterval);
+        background(255)
+    }
 }
