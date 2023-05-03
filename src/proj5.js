@@ -39,7 +39,6 @@ function generate() {
   }
   sentence = nextSentence;
   frac_draw();
-
 }
 
 function frac_draw() {
