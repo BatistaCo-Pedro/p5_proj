@@ -26,20 +26,70 @@
 </html>
 
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
+    * {
+	box-sizing: border-box;
     }
 
-    h1 {
-        font-size: 4rem;
+    body {
+        font-family: 'Roboto Slab', serif;
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 1rem;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
     }
 
     ul {
-        font-size: 2.5rem;
+        padding: 0;
+        margin: 0;
+        max-width: 50rem;
+        position: relative;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul::before {
+        content: '';
+        width: 0.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 8%;
+        background: rgb(70, 8, 216);
+        z-index: -1;
+    }
+
+    ul::after {
+        content: '';
+        width: 0.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 8%;
+        background: rgb(70, 8, 216);
+        z-index: -2;
     }
 
     li {
-        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50rem;
+        padding: 0.5rem 1.5rem 1rem;
+        border-radius: 1.5rem;
+        background: rgb(70, 8, 216);
+        color: white;
+        font-size: 2rem;
+    }
+
+    li {
+        margin-top: 1.5rem;
+    }
+
+    li:hover {
+        color: aqua;
     }
 </style>
