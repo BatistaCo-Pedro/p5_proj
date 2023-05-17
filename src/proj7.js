@@ -17,7 +17,11 @@ function setup() {
   createCanvas(600,  600);
    
   generateGridcells(25); // 20 is cellsize 
-  //randomiseGridcells();
+  randomiseGridcells();
+  createP("P: Play/Pause")
+  createP("R: Randomise and pause")
+  createP("C: Clear and pause")
+  createP("S: Input Star")
 }
 
 function draw() {
@@ -36,6 +40,7 @@ function draw() {
     else{
       turnOffCell(mouseX, mouseY);
     }
+    logOn();
   }
 }
 
@@ -52,6 +57,10 @@ function keyPressed(){
   if (key == 'c'){
     playmode = false;
     clearGridcells();
+  }
+
+  if (key == "s") {
+    star()
   }
 }
 
@@ -117,6 +126,29 @@ function turnOffCell(x, y){
     let index = col + row * numCols;
   
     gridcells[index].turnOff();
+  }
+}
+
+function logOn() {
+  let tempArr = [];
+  for (let c of gridcells) {
+    if(c.currentState) {
+      let ind = c.col + c.row * numCols;
+      tempArr.push(ind);
+    }
+  }
+  console.log(tempArr);
+}
+
+function star() {
+  for(let c of gridcells) {
+    let gridIndex = c.col + c.row * numCols;
+    if([154, 177, 178, 179, 200, 201, 202, 203, 204, 223, 224, 225, 226, 227, 228, 229, 246, 247, 
+      248, 249, 250, 251, 252, 253, 254, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 
+      294, 295, 296, 297, 298, 299, 300, 301, 302, 319, 320, 321, 322, 323, 324, 325, 344, 345, 
+      346, 347, 348, 369, 370, 371, 394].includes(gridIndex)) {
+      c.currentState = true;
+    }
   }
 }
 
@@ -213,3 +245,4 @@ class Gridcell{
     rect(this.x, this.y, this.size, this.size);
   }
 }
+
