@@ -9,12 +9,12 @@ const  size = 1;
 const ELLIPSESIZE = 3;
 
 function setup() {
-  createCanvas(1920, 1080);
-  for (let i = 0; i < country.length; i++) {
+  createCanvas(1900, 1030);
+  /*for (let i = 0; i < country.length; i++) {
     worldMap.push(convertPathToPolygons(
       country[i].vertexPoint
     ));
-  }
+  }*/
 
   flight = loadTable("flights.csv", "csv", "header", process); //call back function
   input = createInput("Switzerland");
@@ -39,7 +39,7 @@ function process() {
 }
 
 function draw() {
-  let collision = false;
+  /*let collision = false;
   for (let i = 0; i < worldMap.length; i++) {
     fill(100);
     if (!collision && mouseIsPressed) {
@@ -56,7 +56,7 @@ function draw() {
       }
       endShape();
     }
-  }
+  }*/
   enterButton.mouseClicked(getflightDetails);
 }
 
@@ -142,7 +142,7 @@ function getInfo() {
     rows[data].to_lat = map(to_lat, -90, 90, height, 0);
   }
 }
-
+/*
 function convertPathToPolygons(path) {
   let coord_point = [0, 0];
   let polygons = [];
@@ -187,4 +187,4 @@ function detectCollision(polygon, x, y) {
   }
   
   return c;
-}
+}*/
