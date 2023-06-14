@@ -1,8 +1,10 @@
-const numCircles = 10;
+let numCircles = 10;
 const maxRadius = 50;
 const stepSize = 2;
 const mouseAttraction = 0.10;
 let circles = [];
+let slider;
+let lastNumCircles;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -11,6 +13,12 @@ function setup() {
   background(255);
   noFill();
 
+  slider = createSlider(10, 250, 10, 5)
+  slider.position(20, 20)
+  generateCircles()
+}
+
+function generateCircles() {
   // generate initial circles
   for (let i = 0; i < numCircles; i++) {
     let x = random(width);
@@ -24,7 +32,13 @@ function setup() {
 
 function draw() {
   background(255);
+  numCircles = slider.value();
+  if(numCircles != lastNumCircles) {
+    generateCircles();
+  }
 
+
+  lastNumCircles = numCircles;
   // update circle positions
   for (let i = 0; i < numCircles; i++) {
     let circle = circles[i];

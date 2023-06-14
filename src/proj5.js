@@ -1,19 +1,19 @@
 let angle;
 let axiom = "F";
 let sentence = axiom;
-let len = 110;
+let len = 225;
 
 let rules = [];
 rules[0] = {
   a: "F",
-  b: "FF+[+F-F-F]-[-F+F+F]"
+  b: "FF-F+F-F-FF"
 }
 
 
 function setup() {
-    createCanvas(400, 400);
-    angle = radians(25);
-    background(200);
+    createCanvas(800, 800);
+    angle = radians(45);
+    background(150);
     createP();
     frac_draw();
     let button = createButton("generate");

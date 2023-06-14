@@ -6,16 +6,15 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 800);
-
-  noLoop();
-  noSmooth();
 }
 
 function draw() {
 
+  image(img, 400, 0)
+
   img.loadPixels();
   for (let y = 0; y < img.height; y++) {
-    for (let x = 0; x < img.wimgth; x++) {
+    for (let x = 0; x < img.width; x++) {
 
       // Gets the original color
       const imgColor = img.get(x, y);
